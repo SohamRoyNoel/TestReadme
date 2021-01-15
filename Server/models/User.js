@@ -43,21 +43,6 @@ UserSchema.methods.getJwtToken = function() {
       })
 }
 
-// Get reset token method
-UserSchema.methods.getResetToken = function() {
-  
-      // Generate a number token
-      const resetToken = crypto.randomBytes(30).toString('hex');
-
-      // Hash the password & assign the token to resetPasswordToken field 
-      this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-
-      // Set resetPasswordExpire field
-      this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
-
-      return resetToken;
-}
-
 // Match user entered password to the hashed password to the db
 UserSchema.methods.signInWithJwt = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
