@@ -10,3 +10,5 @@ Action Name             | Action
 Access mongodb on CLI   | docker exec -it db mongo
 Check connection        | show dbs
 Create a DB             | use codecloudes (If not already exists)
+
+- Run Login seeder
